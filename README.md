@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/tomraithel/tick_tack.svg?branch=master)](https://travis-ci.org/tomraithel/tick_tack)
+[![Gem Version](https://badge.fury.io/rb/tick_tack.svg)](https://badge.fury.io/rb/tick_tack)
 
 # TickTack
 
