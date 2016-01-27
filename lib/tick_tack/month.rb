@@ -9,11 +9,16 @@ module TickTack
     end
 
     def first_day
-      Date.new(year, month, 1)
+      TickTack::Day.new(year, month, 1)
     end
 
     def last_day
-      (first_day >> 1) - 1
+      date = (first_day.date >> 1) - 1
+      TickTack::Day.new(year, month, date.day)
+    end
+
+    def day(day)
+      TickTack::Day.new(year, month, day)
     end
 
     def ==(o)

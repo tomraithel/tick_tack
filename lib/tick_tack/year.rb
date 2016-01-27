@@ -7,11 +7,11 @@ module TickTack
     end
 
     def first_day
-      Date.new(year, 1, 1)
+      TickTack::Day.new(year, 1, 1)
     end
 
     def last_day
-      Date.new(year, 12, 31)
+      TickTack::Day.new(year, 12, 31)
     end
 
     def month(month)

@@ -6,7 +6,7 @@ class TickTackMonthTest < Minitest::Test
     @month = TickTack::Month.new
   end
 
-  def test_that_it_defaults_to_now_month
+  def test_that_it_defaults_to_now
     assert_equal @month.year, 2015
     assert_equal @month.month, 5
   end
@@ -26,14 +26,14 @@ class TickTackMonthTest < Minitest::Test
   end
 
   def test_first_day_of_month
-    assert_equal @month.first_day, Date.new(2015, 5, 1)
+    assert_equal @month.first_day, TickTack::Day.new(2015, 5, 1)
   end
 
-  def test_last_day_of_year
+  def test_last_day_of_month
     [
-        [TickTack::Month.new(2016, 1), Date.new(2016, 1, 31)],
-        [TickTack::Month.new(2016, 2), Date.new(2016, 2, 29)],
-        [TickTack::Month.new(2016, 4), Date.new(2016, 4, 30)],
+        [TickTack::Month.new(2016, 1), TickTack::Day.new(2016, 1, 31)],
+        [TickTack::Month.new(2016, 2), TickTack::Day.new(2016, 2, 29)],
+        [TickTack::Month.new(2016, 4), TickTack::Day.new(2016, 4, 30)],
     ].each do |test|
       assert_equal test[0].last_day, test[1]
     end
@@ -43,8 +43,8 @@ class TickTackMonthTest < Minitest::Test
     m = TickTack::Month.new
     assert_equal @month, m
   end
-  #
-  # def test_get_month
-  #   assert_equal @y.month(0), TickTack::Month.new(2015, 0)
-  # end
+
+  def test_get_day
+    assert_equal @month.day(12), TickTack::Day.new(2015, 5, 12)
+  end
 end
