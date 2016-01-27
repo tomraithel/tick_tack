@@ -14,7 +14,11 @@ class TickTackTest < Minitest::Test
     assert_same ::TickTack.now, date
   end
 
-  def test_that_it_has_a_year
+  def test_that_it_defines_year
     refute_nil ::TickTack::Year
+  end
+
+  def test_that_it_defines_month
+    refute_nil ::TickTack::Month
   end
 end

@@ -14,6 +14,10 @@ module TickTack
       Date.new(year, 12, 31)
     end
 
+    def month(month)
+      Month.new(year, month)
+    end
+
     def ==(o)
       o.class == self.class && o.year == year
     end

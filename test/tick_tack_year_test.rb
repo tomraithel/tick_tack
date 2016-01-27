@@ -3,11 +3,11 @@ require 'test_helper'
 class TickTackYearTest < Minitest::Test
   def setup
     TickTack.now = Date.new(2015, 5, 27)
-    @y = TickTack::Year.new()
+    @year = TickTack::Year.new()
   end
 
   def test_that_it_defaults_to_now_year
-    assert_equal @y.year, 2015
+    assert_equal @year.year, 2015
   end
 
   def test_that_year_can_be_overwritten
@@ -18,15 +18,19 @@ class TickTackYearTest < Minitest::Test
   end
 
   def test_first_day_of_year
-    assert_equal @y.first_day, Date.new(2015, 1, 1)
+    assert_equal @year.first_day, Date.new(2015, 1, 1)
   end
 
   def test_last_day_of_year
-    assert_equal @y.last_day, Date.new(2015, 12, 31)
+    assert_equal @year.last_day, Date.new(2015, 12, 31)
   end
 
   def test_equality
-    y = TickTack::Year.new()
-    assert_equal @y, y
+    y = TickTack::Year.new
+    assert_equal @year, y
+  end
+
+  def test_get_month
+    assert_equal @year.month(0), TickTack::Month.new(2015, 0)
   end
 end
