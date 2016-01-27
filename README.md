@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/tomraithel/tick_tack.svg?branch=master)](https://travis-ci.org/tomraithel/tick_tack)
+
 # TickTack
 
 TODO: Insert instructions here
