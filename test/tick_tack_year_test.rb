@@ -52,4 +52,15 @@ class TickTackYearTest < Minitest::Test
     assert_equal months[0].first_day, @calendar.day(2015, 1, 1)
     assert_equal months[11].last_day, @calendar.day(2015, 12, 31)
   end
+
+  def test_contains?
+    assert @year.contains?(@calendar.month(2015, 1))
+    assert @year.contains?(@calendar.month(2015, 12))
+    refute @year.contains?(@calendar.month(2014, 12))
+
+    assert @year.contains?(@calendar.day(2015, 12, 31))
+    assert @year.contains?(@calendar.day(2015, 1, 1))
+    assert @year.contains?(@calendar.day(2015, 6, 27))
+    refute @year.contains?(@calendar.day(2014, 12, 31))
+  end
 end

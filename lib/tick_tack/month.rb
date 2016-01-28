@@ -38,6 +38,15 @@ module TickTack
       weeks
     end
 
+    def contains?(other)
+      range = (first_day.date.jd..last_day.date.jd)
+      if other.is_a? Day
+        range === other.date.jd
+      else
+        false
+      end
+    end
+
     def next
       next_date = @first_day_date.next_month
       @calendar.month(next_date.year, next_date.month)

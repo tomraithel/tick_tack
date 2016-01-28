@@ -84,4 +84,11 @@ class TickTackMonthTest < Minitest::Test
     prev_month = @month.prev
     assert_equal prev_month, @calendar.month(2015, 4)
   end
+
+  def test_contains?
+    assert @month.contains?(@calendar.day(2015, 5, 31))
+    assert @month.contains?(@calendar.day(2015, 5, 1))
+    refute @month.contains?(@calendar.day(2015, 4, 29))
+    refute @month.contains?(@calendar.day(2014, 12, 31))
+  end
 end

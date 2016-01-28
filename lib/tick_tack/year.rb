@@ -29,6 +29,17 @@ module TickTack
       end
     end
 
+    def contains?(other)
+      range = (first_day.date.jd..last_day.date.jd)
+      if other.is_a? Month
+        range === other.first_day.date.jd
+      elsif other.is_a? Day
+        range === other.date.jd
+      else
+        false
+      end
+    end
+
     def next
       next_date = @first_day_date.next_year
       @calendar.year(next_date.year)
