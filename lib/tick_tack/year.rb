@@ -1,9 +1,9 @@
 module TickTack
   class Year
-    attr_accessor :year_i
+    include TickTack::Scope::Year
 
     def initialize(year_i = nil)
-      @year_i = year_i || TickTack.now.year
+      init_year(year_i)
     end
 
     def first_day
