@@ -6,35 +6,43 @@ class TickTackDayTest < Minitest::Test
     @day = TickTack::Day.new
   end
 
-  def test_that_it_defaults_to_now
-    assert_equal @day.year, 2015
-    assert_equal @day.month, 5
-    assert_equal @day.day, 27
+  def test_that_getters_defaults_to_now
+    assert_equal @day.year_i, 2015
+    assert_equal @day.month_i, 5
+    assert_equal @day.day_i, 27
   end
 
   def test_that_year_can_be_overwritten
     d = TickTack::Day.new(2013)
-    assert_equal d.year, 2013
-    d.year = 2014
-    assert_equal d.year, 2014
+    assert_equal d.year_i, 2013
+    d.year_i = 2014
+    assert_equal d.year_i, 2014
   end
 
   def test_that_month_can_be_overwritten
     d = TickTack::Day.new(2013, 11)
-    assert_equal d.month, 11
-    d.month = 1
-    assert_equal d.month, 1
+    assert_equal d.month_i, 11
+    d.month_i = 1
+    assert_equal d.month_i, 1
   end
 
   def test_that_day_can_be_overwritten
     d = TickTack::Day.new(2013, 11, 12)
-    assert_equal d.day, 12
-    d.day = 1
-    assert_equal d.day, 1
+    assert_equal d.day_i, 12
+    d.day_i = 1
+    assert_equal d.day_i, 1
   end
 
   def test_get_date
     assert_equal @day.date, Date.new(2015, 5, 27)
+  end
+
+  def test_get_month
+    assert_equal @day.month, TickTack::Month.new(2015, 5)
+  end
+
+  def test_get_year
+    assert_equal @day.year, TickTack::Year.new(2015)
   end
 
   def test_equality

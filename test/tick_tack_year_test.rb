@@ -3,18 +3,18 @@ require 'test_helper'
 class TickTackYearTest < Minitest::Test
   def setup
     TickTack.now = Date.new(2015, 5, 27)
-    @year = TickTack::Year.new()
+    @year = TickTack::Year.new
   end
 
-  def test_that_it_defaults_to_now
-    assert_equal @year.year, 2015
+  def test_that_getters_defaults_to_now
+    assert_equal @year.year_i, 2015
   end
 
   def test_that_year_can_be_overwritten
     y = TickTack::Year.new(2013)
-    assert_equal y.year, 2013
-    y.year = 2014
-    assert_equal y.year, 2014
+    assert_equal y.year_i, 2013
+    y.year_i = 2014
+    assert_equal y.year_i, 2014
   end
 
   def test_first_day_of_year
