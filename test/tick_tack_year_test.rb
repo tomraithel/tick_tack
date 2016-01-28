@@ -25,9 +25,11 @@ class TickTackYearTest < Minitest::Test
     assert_equal @year.last_day, @calendar.day(2015, 12, 31)
   end
 
-  def test_equality
-    y = @calendar.year
-    assert_equal @year, y
+  def test_compare
+    bigger_year = @calendar.year(2016)
+    assert bigger_year > @year
+    assert @year < bigger_year
+    assert bigger_year == bigger_year
   end
 
   def test_get_month

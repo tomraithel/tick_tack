@@ -1,5 +1,6 @@
 module TickTack
   class Month
+    include Comparable
     include TickTack::Scope::Month
 
     def initialize(calendar, year_i = nil, month_i = nil)
@@ -24,10 +25,21 @@ module TickTack
       @calendar.day(year_i, month_i, day_i)
     end
 
-    def ==(o)
-      o.class == self.class &&
-          o.year_i == year_i &&
-          o.month_i == month_i
+    def weeks
+      first = first_day.week_start
+      last = last_day.week_end
+      weeks = []
+
+      while first < last
+        weeks << (first..first.week_end)
+        first = first.week_end.next
+      end
+
+      weeks
+    end
+
+    def <=>(other)
+      self.first_day.date <=> other.first_day.date
     end
   end
 end

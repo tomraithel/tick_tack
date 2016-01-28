@@ -45,8 +45,42 @@ class TickTackDayTest < Minitest::Test
     assert_equal @day.year, @calendar.year(2015)
   end
 
-  def test_equality
-    day = @calendar.day
-    assert_equal @day, day
+  def test_compare
+    bigger_day = @calendar.day(2015, 5, 28)
+    assert bigger_day > @day
+    assert @day < bigger_day
+    assert bigger_day == bigger_day
+  end
+
+  def test_next
+    next_day = @calendar.day.next
+    assert_equal next_day, @calendar.day(2015, 5, 28)
+  end
+
+  def test_previous
+    next_day = @calendar.day.previous
+    assert_equal next_day, @calendar.day(2015, 5, 26)
+  end
+
+  def test_week_start
+    assert_equal @calendar.day.week_start, @calendar.day(2015, 5, 24)
+  end
+
+  def test_week_end
+    assert_equal @calendar.day.week_end, @calendar.day(2015, 5, 30)
+  end
+
+  def test_week_start_with_dow_1
+    calendar = TickTack::Calendar.new(Date.new(2015, 1, 1), {
+        dow: 1
+    })
+    assert_equal calendar.day.week_start, calendar.day(2014, 12, 29)
+  end
+
+  def test_week_end_with_dow_1
+    calendar = TickTack::Calendar.new(Date.new(2015, 1, 1), {
+        dow: 1
+    })
+    assert_equal calendar.day.week_end, calendar.day(2015, 1, 4)
   end
 end

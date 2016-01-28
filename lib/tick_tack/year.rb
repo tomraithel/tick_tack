@@ -1,5 +1,6 @@
 module TickTack
   class Year
+    include Comparable
     include TickTack::Scope::Year
 
     def initialize(calendar, year_i = nil)
@@ -22,8 +23,8 @@ module TickTack
       @calendar.month(year_i, month_i)
     end
 
-    def ==(o)
-      o.class == self.class && o.year_i == year_i
+    def <=>(other)
+      self.first_day.date <=> other.first_day.date
     end
   end
 end

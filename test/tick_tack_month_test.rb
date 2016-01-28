@@ -39,9 +39,11 @@ class TickTackMonthTest < Minitest::Test
     end
   end
 
-  def test_equality
-    m = @calendar.month
-    assert_equal @month, m
+  def test_compare
+    bigger_month = @calendar.month(2015, 6)
+    assert bigger_month > @month
+    assert @month < bigger_month
+    assert bigger_month == bigger_month
   end
 
   def test_get_day
@@ -50,5 +52,26 @@ class TickTackMonthTest < Minitest::Test
 
   def test_get_year
     assert_equal @month.year, @calendar.year(2015)
+  end
+
+  def test_weeks
+    weeks = @month.weeks
+    assert_same weeks.length, 6
+    weeks.each do |days|
+      assert_same days.to_a.length, 7
+    end
+    assert_equal weeks[0].first, @calendar.day(2015, 4, 26)
+    assert_equal weeks[5].last, @calendar.day(2015, 6, 6)
+  end
+
+  def test_weeks_with_dow_1
+    calendar = TickTack::Calendar.new(Date.new(2015, 5, 27), {
+        dow: 1
+    })
+    weeks = calendar.month.weeks
+    assert_same weeks.length, 5
+
+    assert_equal weeks[0].first, calendar.day(2015, 4, 27)
+    assert_equal weeks[4].last, calendar.day(2015, 5, 31)
   end
 end
