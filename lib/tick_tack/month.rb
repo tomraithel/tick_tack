@@ -25,13 +25,13 @@ module TickTack
       @calendar.day(year_i, month_i, day_i)
     end
 
-    def weeks
+    def weekdays
       first = first_day.week_start
       last = last_day.week_end
       weeks = []
 
       while first < last
-        weeks << (first..first.week_end).to_a
+        weeks << first.weekdays
         first = first.week_end.next
       end
 

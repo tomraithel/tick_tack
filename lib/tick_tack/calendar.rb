@@ -15,7 +15,7 @@ module TickTack
     end
 
     def now
-      @now.nil? ? Date.new : @now
+      @now.nil? ? DateTime.now.to_date : @now
     end
 
     def year(*args)

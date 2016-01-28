@@ -24,6 +24,10 @@ module TickTack
       @calendar.day(week_end.year, week_end.month, week_end.day)
     end
 
+    def weekdays
+      (week_start..week_end).to_a
+    end
+
     def next
       next_date = @date.next_day
       @calendar.day(next_date.year, next_date.month, next_date.day)

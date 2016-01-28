@@ -54,8 +54,8 @@ class TickTackMonthTest < Minitest::Test
     assert_equal @month.year, @calendar.year(2015)
   end
 
-  def test_weeks
-    weeks = @month.weeks
+  def test_weeksdays
+    weeks = @month.weekdays
     assert_same weeks.length, 6
     weeks.each do |days|
       assert_same days.length, 7
@@ -64,11 +64,11 @@ class TickTackMonthTest < Minitest::Test
     assert_equal weeks[5].last, @calendar.day(2015, 6, 6)
   end
 
-  def test_weeks_with_dow_1
+  def test_weekdays_with_dow_1
     calendar = TickTack::Calendar.new(Date.new(2015, 5, 27), {
         dow: 1
     })
-    weeks = calendar.month.weeks
+    weeks = calendar.month.weekdays
     assert_same weeks.length, 5
 
     assert_equal weeks[0].first, calendar.day(2015, 4, 27)

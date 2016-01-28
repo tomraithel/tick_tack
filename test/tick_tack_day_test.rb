@@ -70,6 +70,13 @@ class TickTackDayTest < Minitest::Test
     assert_equal @calendar.day.week_end, @calendar.day(2015, 5, 30)
   end
 
+  def test_weekdays
+    weekdays = @calendar.day.weekdays
+    assert_equal weekdays.length, 7
+    assert_equal weekdays[0], @calendar.day(2015, 5, 24)
+    assert_equal weekdays[6], @calendar.day(2015, 5, 30)
+  end
+
   def test_week_start_with_dow_1
     calendar = TickTack::Calendar.new(Date.new(2015, 1, 1), {
         dow: 1
