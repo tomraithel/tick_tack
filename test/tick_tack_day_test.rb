@@ -6,27 +6,27 @@ class TickTackDayTest < Minitest::Test
     @day = @calendar.day
   end
 
-  def test_that_getters_defaults_to_now
+  def test_default_getters
     assert_equal @day.year_i, 2015
     assert_equal @day.month_i, 5
     assert_equal @day.day_i, 27
   end
 
-  def test_that_year_can_be_overwritten
+  def test_overwrite_year
     d = @calendar.day(2013)
     assert_equal d.year_i, 2013
     d.year_i = 2014
     assert_equal d.year_i, 2014
   end
 
-  def test_that_month_can_be_overwritten
+  def test_overwrite_month
     d = @calendar.day(2013, 11)
     assert_equal d.month_i, 11
     d.month_i = 1
     assert_equal d.month_i, 1
   end
 
-  def test_that_day_can_be_overwritten
+  def test_overwrite_day
     d = @calendar.day(2013, 11, 12)
     assert_equal d.day_i, 12
     d.day_i = 1

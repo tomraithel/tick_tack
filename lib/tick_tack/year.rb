@@ -23,6 +23,24 @@ module TickTack
       @calendar.month(year_i, month_i)
     end
 
+    def months
+      (1..12).map do |i|
+        month(i)
+      end
+    end
+
+    def next
+      next_date = @first_day_date.next_year
+      @calendar.year(next_date.year)
+    end
+    alias_method :succ, :next
+
+    def previous
+      prev_date = @first_day_date.prev_year
+      @calendar.year(prev_date.year)
+    end
+    alias_method :prev, :previous
+
     def <=>(other)
       self.first_day.date <=> other.first_day.date
     end

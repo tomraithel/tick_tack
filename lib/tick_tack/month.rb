@@ -31,12 +31,24 @@ module TickTack
       weeks = []
 
       while first < last
-        weeks << (first..first.week_end)
+        weeks << (first..first.week_end).to_a
         first = first.week_end.next
       end
 
       weeks
     end
+
+    def next
+      next_date = @first_day_date.next_month
+      @calendar.month(next_date.year, next_date.month)
+    end
+    alias_method :succ, :next
+
+    def previous
+      prev_date = @first_day_date.prev_month
+      @calendar.month(prev_date.year, prev_date.month)
+    end
+    alias_method :prev, :previous
 
     def <=>(other)
       self.first_day.date <=> other.first_day.date

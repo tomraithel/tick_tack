@@ -6,19 +6,19 @@ class TickTackMonthTest < Minitest::Test
     @month = @calendar.month
   end
 
-  def test_that_getters_defaults_to_now
+  def test_default_getters
     assert_equal @month.year_i, 2015
     assert_equal @month.month_i, 5
   end
 
-  def test_that_year_can_be_overwritten
+  def test_overwrite_year
     m = @calendar.month(2013)
     assert_equal m.year_i, 2013
     m.year_i = 2014
     assert_equal m.year_i, 2014
   end
 
-  def test_that_month_can_be_overwritten
+  def test_overwrite_month
     m = @calendar.month(2013, 11)
     assert_equal m.month_i, 11
     m.month_i = 1
@@ -58,7 +58,7 @@ class TickTackMonthTest < Minitest::Test
     weeks = @month.weeks
     assert_same weeks.length, 6
     weeks.each do |days|
-      assert_same days.to_a.length, 7
+      assert_same days.length, 7
     end
     assert_equal weeks[0].first, @calendar.day(2015, 4, 26)
     assert_equal weeks[5].last, @calendar.day(2015, 6, 6)
@@ -73,5 +73,15 @@ class TickTackMonthTest < Minitest::Test
 
     assert_equal weeks[0].first, calendar.day(2015, 4, 27)
     assert_equal weeks[4].last, calendar.day(2015, 5, 31)
+  end
+
+  def test_next_month
+    next_month = @month.next
+    assert_equal next_month, @calendar.month(2015, 6)
+  end
+
+  def test_prev_month
+    prev_month = @month.prev
+    assert_equal prev_month, @calendar.month(2015, 4)
   end
 end

@@ -6,11 +6,11 @@ class TickTackYearTest < Minitest::Test
     @year = @calendar.year
   end
 
-  def test_that_getters_defaults_to_now
+  def test_default_getters
     assert_equal @year.year_i, 2015
   end
 
-  def test_that_year_can_be_overwritten
+  def test_overwrite_year
     y = @calendar.year(2013)
     assert_equal y.year_i, 2013
     y.year_i = 2014
@@ -34,5 +34,22 @@ class TickTackYearTest < Minitest::Test
 
   def test_get_month
     assert_equal @year.month(1), @calendar.month(2015, 1)
+  end
+
+  def test_next_year
+    next_year = @year.next
+    assert_equal next_year, @calendar.year(2016)
+  end
+
+  def test_prev_year
+    prev_year = @year.prev
+    assert_equal prev_year, @calendar.year(2014)
+  end
+
+  def test_months
+    months = @year.months
+    assert_same months.length, 12
+    assert_equal months[0].first_day, @calendar.day(2015, 1, 1)
+    assert_equal months[11].last_day, @calendar.day(2015, 12, 31)
   end
 end
