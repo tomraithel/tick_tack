@@ -7,6 +7,8 @@ module TickTack
 
       init_year(year_i)
       init_month(month_i)
+
+      @first_day_date = Date.new(self.year_i, self.month_i, 1)
     end
 
     def first_day
@@ -14,7 +16,7 @@ module TickTack
     end
 
     def last_day
-      date = (first_day.date >> 1) - 1
+      date = (@first_day_date >> 1) - 1
       @calendar.day(year_i, month_i, date.day)
     end
 

@@ -2,15 +2,15 @@ module TickTack
   class Day
     include TickTack::Scope::Day
 
+    attr_reader :date
+
     def initialize(calendar, year_i = nil, month_i = nil, day_i = nil)
       @calendar = calendar
       init_year(year_i)
       init_month(month_i)
       init_day(day_i)
-    end
 
-    def date
-      Date.new(year_i, month_i, day_i)
+      @date = Date.new(self.year_i, self.month_i, self.day_i)
     end
 
     def ==(o)
