@@ -14,6 +14,22 @@ class TickTackCalendarTest < Minitest::Test
     assert_same @calendar.now, date
   end
 
+  def test_default_conf
+    assert_equal @calendar.conf, {
+        dow: 0
+    }
+  end
+
+  def test_overwritten_conf
+    conf = {
+        dow: 1
+    }
+
+    assert_equal TickTack::Calendar.new(nil, conf).conf, {
+        dow: 1
+    }
+  end
+
   def test_factories
     assert_same @calendar.year.class, TickTack::Year
     assert_same @calendar.month.class, TickTack::Month

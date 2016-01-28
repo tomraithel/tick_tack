@@ -1,10 +1,13 @@
 module TickTack
   class Calendar
 
-    @now = nil
+    attr_reader :conf
 
-    def initialize(now = nil)
+    def initialize(now = nil, conf = {})
       self.now = now
+      @conf = {
+        dow: 0 # day of week - 0 = sunday, 1 = monday
+      }.merge!(conf)
     end
 
     def now=(now)
