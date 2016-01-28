@@ -5,20 +5,15 @@ class TickTackTest < Minitest::Test
     refute_nil ::TickTack::VERSION
   end
 
-  def test_overwriting_now
-    date = Date.new
-    old_date = ::TickTack.now
-    ::TickTack.now = date
-
-    refute_same ::TickTack.now, old_date
-    assert_same ::TickTack.now, date
-  end
-
   def test_that_it_defines_year
     refute_nil ::TickTack::Year
   end
 
   def test_that_it_defines_month
     refute_nil ::TickTack::Month
+  end
+
+  def test_that_it_defines_day
+    refute_nil ::TickTack::Day
   end
 end

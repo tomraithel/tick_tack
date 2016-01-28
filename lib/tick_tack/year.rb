@@ -2,20 +2,21 @@ module TickTack
   class Year
     include TickTack::Scope::Year
 
-    def initialize(year_i = nil)
+    def initialize(calendar, year_i = nil)
+      @calendar = calendar
       init_year(year_i)
     end
 
     def first_day
-      TickTack::Day.new(year_i, 1, 1)
+      @calendar.day(year_i, 1, 1)
     end
 
     def last_day
-      TickTack::Day.new(year_i, 12, 31)
+      @calendar.day(year_i, 12, 31)
     end
 
     def month(month_i)
-      Month.new(year_i, month_i)
+      @calendar.month(year_i, month_i)
     end
 
     def ==(o)

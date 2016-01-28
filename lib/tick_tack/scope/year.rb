@@ -4,7 +4,7 @@ module TickTack
       attr_accessor :year_i
 
       def init_year(year_i = nil)
-        @year_i = year_i || TickTack.now.year
+        @year_i = year_i || @calendar.now.year
       end
     end
   end

@@ -6,11 +6,11 @@ module TickTack
       attr_accessor :day_i
 
       def init_day(day_i = nil)
-        @day_i = day_i || TickTack.now.day
+        @day_i = day_i || @calendar.now.day
       end
 
       def month
-        TickTack::Month.new(year_i, month_i)
+        @calendar.month(year_i, month_i)
       end
     end
   end

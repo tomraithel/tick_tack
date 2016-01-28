@@ -2,7 +2,8 @@ module TickTack
   class Day
     include TickTack::Scope::Day
 
-    def initialize(year_i = nil, month_i = nil, day_i = nil)
+    def initialize(calendar, year_i = nil, month_i = nil, day_i = nil)
+      @calendar = calendar
       init_year(year_i)
       init_month(month_i)
       init_day(day_i)
