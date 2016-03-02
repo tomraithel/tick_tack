@@ -4,7 +4,7 @@
 # TickTack
 
 **TickTack** is a lean wrapper for Rubys native `Date` object to provide some
-helpful methods for easy calendar creation. See the *Example* section below for
+helpful methods for easy calendar creation. See the [Example](#example) section below for
 a better unterstanding! 
 
 
@@ -118,7 +118,8 @@ day = month.day(30)
 ```
 
 #### Methods
-- `day.week_start` Returns the first `Day` of the week which the current day is in. To configure the first day of the week, see *Localization* section below.
+- `day.week_start` Returns the first `Day` of the week which the current day is in. 
+To configure the first day of the week, see [Localization](#localization) section below.
 - `day.week_end` Returns the last `Day` of the week which the current day is in.
 - `day.weekdays` Returns an array of `Day`s for the week in which the current day is in.
 - `day.next` Returns the next `Day`
